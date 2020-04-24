@@ -1,0 +1,20 @@
+# npm packages
+node_modules/
+
+# compiled code
+dist/
+
+# custom docker data during development
+/**/docker/data/
+
+# jetbrains ide files
+.idea/
+
+# vscode configuration
+.vscode/
+
+# log files
+*.log
+
+# coverage output
+coverage/
