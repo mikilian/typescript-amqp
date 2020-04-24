@@ -1,0 +1,25 @@
+{
+  "name": "node-rabbitmq",
+  "version": "1.0.0",
+  "main": "build/src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelkilian/node-rabbitmq"
+  },
+  "author": {
+    "name": "Michael Kilian",
+    "email": "michael.kilian2406@gmail.com",
+    "url": "https://github.com/michaelkilian"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/amqplib": "^0.5.13",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.5"
+  }
+}
