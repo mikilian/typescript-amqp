@@ -4,6 +4,6 @@
  * @license     MIT
  */
 
-export interface ITransformer<T> {
-  transform<From>(data: From): T;
+export interface ITransformer<T, From extends any> {
+  transform(data: From): T;
 }

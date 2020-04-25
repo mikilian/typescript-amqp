@@ -6,9 +6,10 @@
 
 import { IMessage }     from '../amqp';
 import { ITransformer } from './interface';
+import { Message } from 'amqplib';
 
-export abstract class AbstractMessageTransformer<T extends IMessage> implements ITransformer<T> {
-  public transform<From>(data: From): T {
+export abstract class AbstractMessageTransformer<T extends IMessage> implements ITransformer<T, Message> {
+  public transform(data: Message): T {
     const response = data as unknown as T;
 
     if (response != undefined) {

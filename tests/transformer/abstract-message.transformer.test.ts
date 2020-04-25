@@ -8,16 +8,17 @@ import { ITransformer }                   from '@src/transformer/interface';
 import { IMessage }                       from '@src/amqp';
 import { AbstractMessageTransformerFake } from './fixture/abstract-message-transformer.fake';
 import { MessageStub }                    from './fixture/message.stub';
+import { Message }                        from 'amqplib';
 
 describe('AbstractMessageTransformer', () => {
-  let sut: ITransformer<IMessage>;
+  let sut: ITransformer<IMessage, Message>;
 
   beforeEach(() => {
     sut = new AbstractMessageTransformerFake();
   });
 
   it('undefined transformation must return undefined', () => {
-    const result = sut.transform(undefined);
+    const result = sut.transform(undefined as unknown as Message);
 
     expect(result).toBeUndefined();
   });
