@@ -4,12 +4,23 @@
  * @license     MIT
  */
 
-import { Connection }                   from 'amqplib';
-import { AmqpMethodConstructor, IAmqp } from './amqp.interface';
-import { AmqpListener, AmqpRpc }        from './impl';
-import { ConnectionAdapter }            from '../adapter';
-import { IListener, IRpc }              from './interfaces';
-import { MissingConnectionException }   from '../exception';
+import { Connection }                 from 'amqplib';
+import { ConnectionAdapter }          from '../adapter';
+import { MissingConnectionException } from '../exception';
+import {
+  AmqpMethodConstructor,
+  IAmqp
+} from './amqp.interface';
+import {
+  IListener,
+  IRpc,
+  IWorker
+} from './interfaces';
+import {
+  AmqpListener,
+  AmqpRpc,
+  AmqpWorker
+} from './impl';
 import {
   IMessageParameterTransformer,
   IMessageTransformer,
@@ -20,6 +31,7 @@ import {
 export class Amqp extends ConnectionAdapter implements IAmqp {
   private readonly listener = new Map<string, IListener>();
   private readonly rpc      = new Map<string, IRpc>();
+  private readonly worker   = new Map<string, IWorker>();
 
   public constructor(
     private readonly messageParameterTransformer: IMessageParameterTransformer = new MessageParameterTransformer(),
@@ -42,6 +54,14 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
 
   public getRpc(queue: string): IRpc | undefined {
     return this.rpc.get(queue);
+  }
+
+  public createWorker(queue: string): IWorker {
+    return this.createStub(queue, this.worker, AmqpWorker);
+  }
+
+  public getWorker(queue: string): IWorker | undefined {
+    return this.worker.get(queue);
   }
 
   private createStub<T>(queue: string, map: Map<string, T>, classData: AmqpMethodConstructor<T>): T {
