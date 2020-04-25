@@ -14,7 +14,6 @@ import {
   IMessageParameterTransformer,
   IMessageTransformer
 } from '../../transformer';
-import {  } from '@src/amqp/interfaces/routing.interface';
 
 export class AmqpRouting extends AbstractAmqpConnection implements IRouting {
   public constructor(
