@@ -4,17 +4,17 @@
  * @license     MIT
  */
 
-import { ConnectionAdapter } from '@src/adapter/connection.adapter';
-import { IAmqp } from '@src/amqp/amqp.interface';
-import { IListener } from '@src/amqp/interfaces/listener.interface';
-import { MissingConnectionException } from '@src/exception';
-import { AmqpListener } from '@src/amqp/impl';
+import { AmqpListener }                from './impl';
+import { ConnectionAdapter }           from '../adapter';
+import { IAmqp }                       from './amqp.interface';
+import { IListener }                   from './interfaces';
+import { MissingConnectionException }  from '../exception';
 import {
   IMessageParameterTransformer,
   IMessageTransformer,
   MessageParameterTransformer,
   MessageTransformer
-} from '@src/transformer';
+} from '../transformer';
 import { Connection } from 'amqplib';
 
 export class Amqp extends ConnectionAdapter implements IAmqp {
