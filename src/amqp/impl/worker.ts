@@ -49,5 +49,4 @@ export class AmqpWorker extends AbstractAmqpConnection implements IWorker {
     await channel.close();
     return status;
   }
-
 }

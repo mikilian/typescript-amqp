@@ -34,5 +34,15 @@
     "prebuild": "rimraf dist && rimraf bundle",
     "build": "tsc",
     "build:prod": "tsc && webpack"
-  }
+  },
+  "keywords": [
+    "RabbitMQ",
+    "AMQP",
+    "AMQP 0-9-1",
+    "TypeScript",
+    "node",
+    "TypeScript RabbitMQ",
+    "TypeScript AMQP",
+    "TypeScript AMQP 0-9-1"
+  ]
 }
