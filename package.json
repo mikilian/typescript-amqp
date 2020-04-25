@@ -1,0 +1,38 @@
+{
+  "name": "typescript-amqp",
+  "version": "1.0.0",
+  "main": "bundle/index.js",
+  "types": "bundle/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelkilian/typescript-amqp"
+  },
+  "author": {
+    "name": "Michael Kilian",
+    "email": "michael.kilian2406@gmail.com",
+    "url": "https://github.com/michaelkilian"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/amqplib": "^0.5.13",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
+    "jest": "^25.4.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.4.0",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "typings-bundler-plugin": "^1.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.5"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist && rimraf bundle",
+    "build": "tsc",
+    "build:prod": "tsc && webpack"
+  }
+}

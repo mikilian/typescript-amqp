@@ -4,6 +4,9 @@ node_modules/
 # compiled code
 dist/
 
+# bundled code
+bundle/
+
 # custom docker data during development
 /**/docker/data/
 
