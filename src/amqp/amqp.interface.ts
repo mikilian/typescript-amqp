@@ -12,7 +12,7 @@ import {
 } from '../transformer';
 import {
   IListener,
-  IPublishSubscribe,
+  IPublishSubscribe, IRouting,
   IRpc,
   IWorker
 } from '../amqp';
@@ -38,6 +38,11 @@ export interface IAmqp extends IConnectionAdapter {
    */
   createPublisherAndSubscriber(exchange: string): IPublishSubscribe;
   getPublisherAndSubscriber(exchange: string): IPublishSubscribe | undefined;
+  /**
+   * @throws MissingConnectionException
+   */
+  createRouting(exchange: string): IRouting;
+  getRouting(exchange: string): IRouting | undefined;
 }
 
 export type AmqpMethodConstructor<T> = (new (
