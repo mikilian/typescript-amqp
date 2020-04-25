@@ -43,5 +43,6 @@ export class AmqpListener extends AbstractAmqpConnection implements IListener {
 
     await channel.assertQueue(this.queue, { durable: false });
     await channel.sendToQueue(this.queue, this.messageParameterTransformer.transform(data));
+    await channel.close();
   }
 }

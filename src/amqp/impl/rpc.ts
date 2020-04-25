@@ -52,6 +52,8 @@ export class AmqpRpc extends AbstractAmqpConnection implements IRpc {
               return channel.consume(queueData.queue, async msg => {
                 if (msg && msg.properties.correlationId === id) {
                   await channel.deleteQueue(queueData.queue);
+                  await channel.close();
+
                   resolve(msg.content);
                 }
               }, { noAck: true })
