@@ -3,6 +3,7 @@
  * @copyright   2020, https://github.com/michaelkilian
  * @license     MIT
  */
+
 import { IUrlValidator } from './interface/url.validator-interface';
 
 export class UrlValidator implements IUrlValidator {

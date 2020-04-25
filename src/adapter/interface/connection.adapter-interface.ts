@@ -3,6 +3,7 @@
  * @copyright   2020, https://github.com/michaelkilian
  * @license     MIT
  */
+
 import { Connection, Options } from 'amqplib';
 
 export interface IConnectionAdapter {

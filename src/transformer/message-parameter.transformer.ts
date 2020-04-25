@@ -4,7 +4,7 @@
  * @license     MIT
  */
 
-import { ITransformer } from '@src/transformer/interface';
+import { ITransformer } from './interface';
 
 export type IMessageParameterTransformer = ITransformer<Buffer, string | object | Buffer>;
 
