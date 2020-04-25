@@ -42,14 +42,16 @@ export class AmqpRouting extends AbstractAmqpConnection implements IRouting {
     });
   }
 
-  public async send(severity: string, data: string): Promise<void>
-  public async send(severity: string, data: object): Promise<void>
-  public async send(severity: string, data: Buffer): Promise<void>
-  public async send(severity: string, data: string | object | Buffer): Promise<void> {
+  public async send(severity: string, data: string): Promise<boolean>
+  public async send(severity: string, data: object): Promise<boolean>
+  public async send(severity: string, data: Buffer): Promise<boolean>
+  public async send(severity: string, data: string | object | Buffer): Promise<boolean> {
     const channel = await this.connection.createChannel();
 
     await channel.assertExchange(this.exchange, 'direct', { durable: false });
-    await channel.publish(this.exchange, severity, this.messageParameterTransformer.transform(data));
+    const status = channel.publish(this.exchange, severity, this.messageParameterTransformer.transform(data));
+
     await channel.close();
+    return status;
   }
 }

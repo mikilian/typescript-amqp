@@ -6,4 +6,4 @@
 import { IAmqpSeverityMethod, IMessage } from '@src/amqp';
 
 export type RoutingServerCallback = (msg: IMessage | null) => any;
-export type IRouting              = IAmqpSeverityMethod<RoutingServerCallback>;
+export type IRouting              = IAmqpSeverityMethod<RoutingServerCallback, boolean>;

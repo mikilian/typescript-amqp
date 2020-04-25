@@ -37,15 +37,17 @@ export class AmqpWorker extends AbstractAmqpConnection implements IWorker {
     });
   }
 
-  public async send(data: string): Promise<void>
-  public async send(data: object): Promise<void>
-  public async send(data: Buffer): Promise<void>
-  public async send(data: string | object | Buffer): Promise<void> {
+  public async send(data: string): Promise<boolean>
+  public async send(data: object): Promise<boolean>
+  public async send(data: Buffer): Promise<boolean>
+  public async send(data: string | object | Buffer): Promise<boolean> {
     const channel = await this.connection.createChannel();
 
     await channel.assertQueue(this.queue, { durable: true });
-    await channel.sendToQueue(this.queue, this.messageParameterTransformer.transform(data), { persistent: true });
+    const status = channel.sendToQueue(this.queue, this.messageParameterTransformer.transform(data), { persistent: true });
+
     await channel.close();
+    return status;
   }
 
 }

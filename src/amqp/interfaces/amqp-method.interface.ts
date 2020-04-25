@@ -12,10 +12,10 @@ export interface IAmqpMethod<TCreate, TCallback, TSend> {
   send(data: string | object | Buffer): Promise<TSend>;
 }
 
-export interface IAmqpSeverityMethod<TCallback> {
+export interface IAmqpSeverityMethod<TCallback, TReturn> {
   create(severities: string[], callback: TCallback): Promise<void>;
-  send(severity: string, data: string): Promise<void>;
-  send(severity: string, data: object): Promise<void>;
-  send(severity: string, data: Buffer): Promise<void>;
-  send(severity: string, data: string | object | Buffer): Promise<void>;
+  send(severity: string, data: string): Promise<TReturn>;
+  send(severity: string, data: object): Promise<TReturn>;
+  send(severity: string, data: Buffer): Promise<TReturn>;
+  send(severity: string, data: string | object | Buffer): Promise<TReturn>;
 }

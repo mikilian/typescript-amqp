@@ -36,14 +36,16 @@ export class AmqpListener extends AbstractAmqpConnection implements IListener {
     });
   }
 
-  public async send(data: string): Promise<void>
-  public async send(data: object): Promise<void>
-  public async send(data: Buffer): Promise<void>
-  public async send(data: string | object | Buffer): Promise<void> {
+  public async send(data: string): Promise<boolean>
+  public async send(data: object): Promise<boolean>
+  public async send(data: Buffer): Promise<boolean>
+  public async send(data: string | object | Buffer): Promise<boolean> {
     const channel = await this.connection.createChannel();
 
     await channel.assertQueue(this.queue, { durable: false });
-    await channel.sendToQueue(this.queue, this.messageParameterTransformer.transform(data));
+    const status = channel.sendToQueue(this.queue, this.messageParameterTransformer.transform(data));
+
     await channel.close();
+    return status;
   }
 }

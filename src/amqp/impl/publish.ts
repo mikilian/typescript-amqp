@@ -39,14 +39,16 @@ export class AmqpPublishSubscribe extends AbstractAmqpConnection implements  IPu
     });
   }
 
-  public async send(data: string): Promise<void>
-  public async send(data: object): Promise<void>
-  public async send(data: Buffer): Promise<void>
-  public async send(data: string | object | Buffer): Promise<void> {
+  public async send(data: string): Promise<boolean>
+  public async send(data: object): Promise<boolean>
+  public async send(data: Buffer): Promise<boolean>
+  public async send(data: string | object | Buffer): Promise<boolean> {
     const channel = await this.connection.createChannel();
 
     await channel.assertExchange(this.exchange, 'fanout', { durable: false });
-    await channel.publish(this.exchange, '', this.messageParameterTransformer.transform(data));
+    const status = channel.publish(this.exchange, '', this.messageParameterTransformer.transform(data));
+
     await channel.close();
+    return status;
   }
 }

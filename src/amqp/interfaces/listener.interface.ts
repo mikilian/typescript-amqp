@@ -7,5 +7,5 @@
 import { IAmqpMethod, IMessage } from './';
 
 export type ListenerServerCallback = (msg: IMessage | null) => any;
-export type IListener = IAmqpMethod<void, ListenerServerCallback, void>;
+export type IListener = IAmqpMethod<void, ListenerServerCallback, boolean>;
 

@@ -7,4 +7,4 @@
 import { IAmqpMethod, IMessage } from './';
 
 export type PublishSubscribeServerCallback = (msg: IMessage | null) => any;
-export type IPublishSubscribe              = IAmqpMethod<void, PublishSubscribeServerCallback, void>;
+export type IPublishSubscribe              = IAmqpMethod<void, PublishSubscribeServerCallback, boolean>;

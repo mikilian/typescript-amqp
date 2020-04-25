@@ -7,4 +7,4 @@
 import { IAmqpSeverityMethod, IMessage } from '@src/amqp';
 
 export type TopicsServerCallback = (msg: IMessage | null) => any;
-export type ITopics              = IAmqpSeverityMethod<TopicsServerCallback>;
+export type ITopics              = IAmqpSeverityMethod<TopicsServerCallback, boolean>;
