@@ -9,5 +9,5 @@ import { IMessage }                   from '../amqp/interfaces';
 import { ITransformer }               from './interface';
 import { Message }                    from 'amqplib';
 
-export type IMessageTransformer = ITransformer<IMessage, Message>;
+export type IMessageTransformer = ITransformer<IMessage, Message | null>;
 export class MessageTransformer extends AbstractMessageTransformer<IMessage> implements IMessageTransformer { }
