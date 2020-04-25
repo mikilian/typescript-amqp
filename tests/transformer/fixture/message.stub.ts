@@ -3,6 +3,7 @@
  * @copyright   2020, https://github.com/michaelkilian
  * @license     MIT
  */
+
 import { Message, MessageProperties } from 'amqplib';
 
 export const MessageStub: Message = {

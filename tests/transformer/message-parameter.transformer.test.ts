@@ -7,7 +7,7 @@
 import {
   IMessageParameterTransformer,
   MessageParameterTransformer
-} from '@src/transformer/message-parameter.transformer';
+} from '@src/transformer';
 
 describe('MessageParameterTransformer', (): void => {
   let sut: IMessageParameterTransformer;

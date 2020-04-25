@@ -4,7 +4,7 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter } from './interface/connection.adapter-interface';
+import { IConnectionAdapter } from './interface';
 import { IUrlValidator }      from '../validator/interface/url.validator-interface';
 import { UrlValidator }       from '../validator/url.validator';
 import {

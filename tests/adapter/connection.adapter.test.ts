@@ -4,13 +4,13 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter } from '../../src/adapter/interface/connection.adapter-interface';
-import { ConnectionAdapter } from '../../src/adapter/connection.adapter';
+import { IConnectionAdapter } from '@src/adapter/interface';
+import { ConnectionAdapter }  from '@src/adapter';
 import {
   ConnectionFailedException,
   InvalidConnectionUrlException,
   MissingConnectionException
-} from '../../src/exception';
+} from '@src/exception';
 
 describe('ConnectionAdapter', () => {
   let sut: IConnectionAdapter;
