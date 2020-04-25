@@ -5,4 +5,5 @@
  */
 
 export * from './message.abstract-transformer';
+export * from './message.transformer';
 export * from './message-parameter.transformer';
