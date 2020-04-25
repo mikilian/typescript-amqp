@@ -5,6 +5,7 @@
  */
 
 export * from './abstract-amqp-connection';
+export * from './amqp-method.interface';
 export * from './consume-message.interface';
 export * from './get-message.interface';
 export * from './listener.interface';
