@@ -1,0 +1,14 @@
+/**/docker/data/
+.idea/
+.vscode/
+coverage/
+dist/
+node_modules/
+resources/
+src/
+tests/
+.editorconfig
+.gitignore
+tsconfig.json
+webpack.config.js
+*.log
