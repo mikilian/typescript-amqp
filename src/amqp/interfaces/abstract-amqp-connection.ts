@@ -7,7 +7,7 @@
 import { Connection } from 'amqplib';
 
 export abstract class AbstractAmqpConnection {
-  protected constructor(
+  public constructor(
     protected readonly connection: Connection
   ) { }
 }
