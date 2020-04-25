@@ -5,5 +5,6 @@
  */
 
 export * from './listener';
+export * from './publish';
 export * from './rpc';
 export * from './worker';
