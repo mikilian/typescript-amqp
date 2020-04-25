@@ -13,18 +13,18 @@ yarn add typescript-amqp
 
 ## Advantages
 
--[x] native TypeScript support
--[x] easy usage
+- [x] native TypeScript support
+- [x] easy usage
 
 ## Supports
 
--[x] basic listener (e.g. [Hello World!](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html))
--[x] [Work queues](https://www.rabbitmq.com/tutorials/tutorial-two-javascript.html)
--[x] [Publish/Subscribe](https://www.rabbitmq.com/tutorials/tutorial-three-javascript.html)
--[x] [Routing](https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html)
--[x] [Topics](https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html)
--[x] [Remote procedure call (RPC)](https://www.rabbitmq.com/tutorials/tutorial-six-javascript.html)
--[ ] [Publisher Confirms](https://www.rabbitmq.com/tutorials/tutorial-seven-java.html)
+- [x] basic listener (e.g. [Hello World!](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html))
+- [x] [Work queues](https://www.rabbitmq.com/tutorials/tutorial-two-javascript.html)
+- [x] [Publish/Subscribe](https://www.rabbitmq.com/tutorials/tutorial-three-javascript.html)
+- [x] [Routing](https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html)
+- [x] [Topics](https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html)
+- [x] [Remote procedure call (RPC)](https://www.rabbitmq.com/tutorials/tutorial-six-javascript.html)
+- [ ] [Publisher Confirms](https://www.rabbitmq.com/tutorials/tutorial-seven-java.html)
 
 ## Amqp
 
