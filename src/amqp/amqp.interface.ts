@@ -13,7 +13,7 @@ import {
 import {
   IListener,
   IPublishSubscribe, IRouting,
-  IRpc,
+  IRpc, ITopics,
   IWorker
 } from '../amqp';
 
@@ -43,6 +43,11 @@ export interface IAmqp extends IConnectionAdapter {
    */
   createRouting(exchange: string): IRouting;
   getRouting(exchange: string): IRouting | undefined;
+  /**
+   * @throws MissingConnectionException
+   */
+  createTopics(exchange: string): ITopics;
+  getTopics(exchange: string): ITopics | undefined;
 }
 
 export type AmqpMethodConstructor<T> = (new (

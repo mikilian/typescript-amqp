@@ -12,13 +12,19 @@ import {
   IAmqp
 } from './amqp.interface';
 import {
-  IListener, IPublishSubscribe, IRouting,
+  IListener,
+  IPublishSubscribe,
+  IRouting,
   IRpc,
+  ITopics,
   IWorker
 } from './interfaces';
 import {
-  AmqpListener, AmqpPublishSubscribe, AmqpRouting,
+  AmqpListener,
+  AmqpPublishSubscribe,
+  AmqpRouting,
   AmqpRpc,
+  AmqpTopics,
   AmqpWorker
 } from './impl';
 import {
@@ -35,6 +41,7 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
   private readonly worker                 = new Map<string, IWorker>();
   private readonly publisherAndSubscriber = new Map<string, IPublishSubscribe>();
   private readonly routing                = new Map<string, IRouting>();
+  private readonly topics                 = new Map<string, ITopics>();
 
   public constructor(
     private readonly messageParameterTransformer: IMessageParameterTransformer = new MessageParameterTransformer(),
@@ -82,6 +89,14 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
 
   public getRouting(exchange: string): IRouting | undefined {
     return this.routing.get(exchange);
+  }
+
+  public createTopics(exchange: string): ITopics {
+    return this.createStub(exchange, this.topics, AmqpTopics);
+  }
+
+  public getTopics(exchange: string): ITopics | undefined {
+    return this.topics.get(exchange);
   }
 
   private createStub<T>(
