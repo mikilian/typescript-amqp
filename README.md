@@ -11,6 +11,12 @@ avoid code duplication.
 yarn add typescript-amqp
 ```
 
+You also need the `@types/amqplib` for development.
+
+```bash
+yarn add --dev @types/amqplib
+```
+
 ## Advantages
 
 - [x] native TypeScript support
