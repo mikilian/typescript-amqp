@@ -75,21 +75,26 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
     return this.publisherAndSubscriber.get(exchange);
   }
 
-  private createStub<T>(queue: string, map: Map<string, T>, classData: AmqpMethodConstructor<T>): T {
+  private createStub<T>(
+    queue:     string,
+    map:       Map<string, T>,
+    classData: AmqpMethodConstructor<T>,
+    ...args:   string[]): T {
     const connection = this.getConnection();
 
     if (connection == undefined) {
       throw new MissingConnectionException();
     }
 
-    return this.prepare(queue, connection, map, classData);
+    return this.prepare(queue, connection, map, classData, ...args);
   }
 
   private prepare<T>(
     queue:      string,
     connection: Connection,
     map:        Map<string, T>,
-    classData:  AmqpMethodConstructor<T>
+    classData:  AmqpMethodConstructor<T>,
+    ...args:    string[]
   ): T {
     if (!map.has(queue)) {
       map.set(queue, new classData(
@@ -97,7 +102,8 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
         connection,
         this.messageParameterTransformer,
         this.messageTransformer,
-        this.consumeMessageTransformer
+        this.consumeMessageTransformer,
+        ...args
       ));
     }
     return map.get(queue) as T;

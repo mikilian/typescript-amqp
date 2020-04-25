@@ -45,5 +45,6 @@ export type AmqpMethodConstructor<T> = (new (
   connection:                  Connection,
   messageParameterTransformer: IMessageParameterTransformer,
   messageTransformer:          IMessageTransformer,
-  consumeMessageTransformer:   IMessageTransformer
+  consumeMessageTransformer:   IMessageTransformer,
+  ...args:                     string[]
 ) => T);
