@@ -5,7 +5,7 @@
  */
 
 import { ITransformer }                   from '@src/transformer/interface';
-import { IMessage }                       from '@src/amqp';
+import { IMessage }                       from '@src/amqp/interfaces';
 import { AbstractMessageTransformerFake } from './fixture/abstract-message-transformer.fake';
 import { MessageStub }                    from './fixture/message.stub';
 import { Message }                        from 'amqplib';

@@ -4,9 +4,9 @@
  * @license     MIT
  */
 
-import { IMessage }     from '../amqp';
+import { IMessage }     from '../amqp/interfaces';
 import { ITransformer } from './interface';
-import { Message } from 'amqplib';
+import { Message }      from 'amqplib';
 
 export abstract class AbstractMessageTransformer<T extends IMessage> implements ITransformer<T, Message> {
   public transform(data: Message): T {
