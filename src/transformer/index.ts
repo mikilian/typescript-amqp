@@ -5,6 +5,7 @@
  */
 
 export * from './interface';
+export * from './consume-message.transformer';
 export * from './message.abstract-transformer';
 export * from './message.transformer';
 export * from './message-parameter.transformer';
