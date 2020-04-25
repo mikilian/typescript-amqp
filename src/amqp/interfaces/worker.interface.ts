@@ -7,5 +7,5 @@
 import { IAmqpMethod, IMessage } from './';
 import { Channel }               from 'amqplib';
 
-export type AmqpWorkerServerCallback = (channel: Channel, msg: IMessage | null) => any;
-export type IWorker                  = IAmqpMethod<void, AmqpWorkerServerCallback, void>;
+export type WorkerServerCallback = (channel: Channel, msg: IMessage | null) => any;
+export type IWorker              = IAmqpMethod<void, WorkerServerCallback, void>;
