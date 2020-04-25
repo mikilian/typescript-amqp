@@ -20,10 +20,11 @@ export class AmqpWorker extends AbstractAmqpConnection implements IWorker {
     private readonly queue:      string,
     connection:                  Connection,
     messageParameterTransformer: IMessageParameterTransformer,
-    messageTransformer:          IMessageTransformer
+    messageTransformer:          IMessageTransformer,
+    consumeMessageTransformer:   IMessageTransformer
   )
   {
-    super(connection, messageParameterTransformer, messageTransformer);
+    super(connection, messageParameterTransformer, messageTransformer, consumeMessageTransformer);
   }
 
   public async create(callback: WorkerServerCallback): Promise<void> {

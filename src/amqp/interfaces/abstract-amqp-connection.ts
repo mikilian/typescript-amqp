@@ -14,6 +14,7 @@ export abstract class AbstractAmqpConnection {
   protected constructor(
     protected readonly connection:                  Connection,
     protected readonly messageParameterTransformer: IMessageParameterTransformer,
-    protected readonly messageTransformer:          IMessageTransformer
+    protected readonly messageTransformer:          IMessageTransformer,
+    protected readonly consumeMessageTransformer:   IMessageTransformer
   ) { }
 }

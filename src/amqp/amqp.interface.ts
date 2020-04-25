@@ -4,13 +4,18 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter }       from '../adapter';
-import { IListener, IRpc, IWorker } from '../amqp';
-import { Connection }               from 'amqplib';
+import { IConnectionAdapter } from '../adapter';
+import { Connection }         from 'amqplib';
 import {
   IMessageParameterTransformer,
   IMessageTransformer
 } from '../transformer';
+import {
+  IListener,
+  IPublishSubscribe,
+  IRpc,
+  IWorker
+} from '../amqp';
 
 export interface IAmqp extends IConnectionAdapter {
   /**
@@ -28,11 +33,17 @@ export interface IAmqp extends IConnectionAdapter {
    */
   createWorker(queue: string): IWorker;
   getWorker(queue: string): IWorker | undefined;
+  /**
+   * @throws MissingConnectionException
+   */
+  createPublisherAndSubscriber(exchange: string): IPublishSubscribe;
+  getPublisherAndSubscriber(exchange: string): IPublishSubscribe | undefined;
 }
 
 export type AmqpMethodConstructor<T> = (new (
   queue:                       string,
   connection:                  Connection,
   messageParameterTransformer: IMessageParameterTransformer,
-  messageTransformer:          IMessageTransformer
+  messageTransformer:          IMessageTransformer,
+  consumeMessageTransformer:   IMessageTransformer
 ) => T);

@@ -20,10 +20,11 @@ export class AmqpPublishSubscribe extends AbstractAmqpConnection implements  IPu
     private readonly exchange:   string,
     connection:                  Connection,
     messageParameterTransformer: IMessageParameterTransformer,
-    messageTransformer:          IMessageTransformer
+    messageTransformer:          IMessageTransformer,
+    consumeMessageTransformer:   IMessageTransformer
   )
   {
-    super(connection, messageParameterTransformer, messageTransformer);
+    super(connection, messageParameterTransformer, messageTransformer, consumeMessageTransformer);
   }
 
   public async create(callback: PublishSubscribeServerCallback): Promise<void> {
@@ -33,7 +34,9 @@ export class AmqpPublishSubscribe extends AbstractAmqpConnection implements  IPu
     const queueData = await channel.assertQueue('', { exclusive: true });
 
     await channel.bindQueue(queueData.queue, this.exchange, '');
-    await channel.consume(queueData.queue, msg => callback(this.messageTransformer.transform(msg)));
+    await channel.consume(queueData.queue, msg => callback(this.messageTransformer.transform(msg)), {
+      noAck: true
+    });
   }
 
   public async send(data: string): Promise<void>
@@ -42,7 +45,7 @@ export class AmqpPublishSubscribe extends AbstractAmqpConnection implements  IPu
   public async send(data: string | object | Buffer): Promise<void> {
     const channel = await this.connection.createChannel();
 
-    await channel.assertExchange(this.exchange, 'fanout', { durable: true });
+    await channel.assertExchange(this.exchange, 'fanout', { durable: false });
     await channel.publish(this.exchange, '', this.messageParameterTransformer.transform(data));
     await channel.close();
   }

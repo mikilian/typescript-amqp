@@ -20,10 +20,11 @@ export class AmqpListener extends AbstractAmqpConnection implements IListener {
     private readonly queue:      string,
     connection:                  Connection,
     messageParameterTransformer: IMessageParameterTransformer,
-    messageTransformer:          IMessageTransformer
+    messageTransformer:          IMessageTransformer,
+    consumeMessageTransformer:   IMessageTransformer
   )
   {
-    super(connection, messageParameterTransformer, messageTransformer);
+    super(connection, messageParameterTransformer, messageTransformer, consumeMessageTransformer);
   }
 
   public async create(callback: (msg: IMessage | null) => any) {

@@ -12,16 +12,17 @@ import {
   IAmqp
 } from './amqp.interface';
 import {
-  IListener,
+  IListener, IPublishSubscribe,
   IRpc,
   IWorker
 } from './interfaces';
 import {
-  AmqpListener,
+  AmqpListener, AmqpPublishSubscribe,
   AmqpRpc,
   AmqpWorker
 } from './impl';
 import {
+  ConsumeMessageTransformer,
   IMessageParameterTransformer,
   IMessageTransformer,
   MessageParameterTransformer,
@@ -29,13 +30,15 @@ import {
 } from '../transformer';
 
 export class Amqp extends ConnectionAdapter implements IAmqp {
-  private readonly listener = new Map<string, IListener>();
-  private readonly rpc      = new Map<string, IRpc>();
-  private readonly worker   = new Map<string, IWorker>();
+  private readonly listener               = new Map<string, IListener>();
+  private readonly rpc                    = new Map<string, IRpc>();
+  private readonly worker                 = new Map<string, IWorker>();
+  private readonly publisherAndSubscriber = new Map<string, IPublishSubscribe>();
 
   public constructor(
     private readonly messageParameterTransformer: IMessageParameterTransformer = new MessageParameterTransformer(),
-    private readonly messageTransformer:          IMessageTransformer          = new MessageTransformer()
+    private readonly messageTransformer:          IMessageTransformer          = new MessageTransformer(),
+    private readonly consumeMessageTransformer:   IMessageTransformer          = new ConsumeMessageTransformer()
   ) {
     super();
   }
@@ -64,6 +67,14 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
     return this.worker.get(queue);
   }
 
+  public createPublisherAndSubscriber(exchange: string): IPublishSubscribe {
+    return this.createStub(exchange, this.publisherAndSubscriber, AmqpPublishSubscribe);
+  }
+
+  public getPublisherAndSubscriber(exchange: string): IPublishSubscribe | undefined {
+    return this.publisherAndSubscriber.get(exchange);
+  }
+
   private createStub<T>(queue: string, map: Map<string, T>, classData: AmqpMethodConstructor<T>): T {
     const connection = this.getConnection();
 
@@ -85,7 +96,8 @@ export class Amqp extends ConnectionAdapter implements IAmqp {
         queue,
         connection,
         this.messageParameterTransformer,
-        this.messageTransformer
+        this.messageTransformer,
+        this.consumeMessageTransformer
       ));
     }
     return map.get(queue) as T;
