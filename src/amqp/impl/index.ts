@@ -5,3 +5,4 @@
  */
 
 export * from './listener';
+export * from './rpc';
