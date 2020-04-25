@@ -6,3 +6,4 @@
 
 export * from './listener';
 export * from './rpc';
+export * from './worker';
