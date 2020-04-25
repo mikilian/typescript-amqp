@@ -8,7 +8,7 @@ import { Connection } from 'amqplib';
 import {
   AbstractAmqpConnection,
   IListener,
-  IMessage
+  ListenerServerCallback
 } from '../interfaces';
 import {
   IMessageParameterTransformer,
@@ -27,7 +27,7 @@ export class AmqpListener extends AbstractAmqpConnection implements IListener {
     super(connection, messageParameterTransformer, messageTransformer, consumeMessageTransformer);
   }
 
-  public async create(callback: (msg: IMessage | null) => any) {
+  public async create(callback: ListenerServerCallback) {
     const channel = await this.connection.createChannel();
 
     await channel.assertQueue(this.queue, { durable: false });
