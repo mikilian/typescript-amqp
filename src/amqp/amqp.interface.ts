@@ -5,7 +5,9 @@
  */
 
 import { IConnectionAdapter } from '../adapter';
-import { IListener }          from '../amqp';
+import { IListener, IRpc }    from '../amqp';
+import { Connection } from 'amqplib';
+import { IMessageParameterTransformer, IMessageTransformer } from '@src/transformer';
 
 export interface IAmqp extends IConnectionAdapter {
   /**
@@ -13,4 +15,14 @@ export interface IAmqp extends IConnectionAdapter {
    */
   createListener(queue: string): IListener;
   getListener(queue: string): IListener | undefined;
+
+  createRpc(queue: string): IRpc;
+  getRpc(queue: string): IRpc | undefined;
 }
+
+export type AmqpMethodConstructor<T> = (new (
+  queue:                       string,
+  connection:                  Connection,
+  messageParameterTransformer: IMessageParameterTransformer,
+  messageTransformer:          IMessageTransformer
+) => T);
