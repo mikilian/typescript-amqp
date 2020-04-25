@@ -4,12 +4,8 @@
  * @license     MIT
  */
 
-import { IMessage } from './';
+import { IAmqpMethod, IMessage } from './';
 
-export interface IListener {
-  create(callback: (msg: IMessage | null) => any): Promise<void>;
-  send(data: string): Promise<void>;
-  send(data: object): Promise<void>;
-  send(data: Buffer): Promise<void>;
-  send(data: string | object | Buffer): Promise<void>;
-}
+export type ListenerServerCallback = (msg: IMessage | null) => any;
+export type IListener = IAmqpMethod<void, ListenerServerCallback, void>;
+
