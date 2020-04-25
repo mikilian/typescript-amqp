@@ -32,7 +32,7 @@ export class AmqpRpc extends AbstractAmqpConnection implements IRpc {
 
     await channel.assertQueue(this.queue, { durable: true });
     await channel.prefetch(1);
-    await channel.consume(this.queue, msg => callback(channel, this.messageTransformer.transform(msg)));
+    await channel.consume(this.queue, msg => callback(channel, this.consumeMessageTransformer.transform(msg)));
   }
 
   public async send(data: string): Promise<Buffer>

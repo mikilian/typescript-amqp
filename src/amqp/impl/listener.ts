@@ -31,7 +31,7 @@ export class AmqpListener extends AbstractAmqpConnection implements IListener {
     const channel = await this.connection.createChannel();
 
     await channel.assertQueue(this.queue, { durable: false });
-    await channel.consume(this.queue, msg => callback(this.messageTransformer.transform(msg)), {
+    await channel.consume(this.queue, msg => callback(this.consumeMessageTransformer.transform(msg)), {
       noAck: true
     });
   }

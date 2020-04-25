@@ -34,7 +34,7 @@ export class AmqpPublishSubscribe extends AbstractAmqpConnection implements  IPu
     const queueData = await channel.assertQueue('', { exclusive: true });
 
     await channel.bindQueue(queueData.queue, this.exchange, '');
-    await channel.consume(queueData.queue, msg => callback(this.messageTransformer.transform(msg)), {
+    await channel.consume(queueData.queue, msg => callback(this.consumeMessageTransformer.transform(msg)), {
       noAck: true
     });
   }
