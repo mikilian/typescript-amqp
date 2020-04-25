@@ -4,19 +4,17 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter } from './interface';
-import { IUrlValidator }      from '../validator/interface/url.validator-interface';
-import { UrlValidator }       from '../validator/url.validator';
+import { IConnectionAdapter }          from './interface';
+import { IUrlValidator, UrlValidator } from '../validator'
+import {
+  ConnectionFailedException,
+  InvalidConnectionUrlException, MissingConnectionException
+} from '../exception';
 import {
   connect,
   Connection,
   Options
 } from 'amqplib';
-
-import {
-  ConnectionFailedException,
-  InvalidConnectionUrlException, MissingConnectionException
-} from '@src/exception';
 
 export class ConnectionAdapter implements IConnectionAdapter {
   private connection: Connection | null = null;

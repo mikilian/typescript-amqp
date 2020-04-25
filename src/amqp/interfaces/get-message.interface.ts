@@ -5,7 +5,7 @@
  */
 
 import { GetMessageFields } from 'amqplib';
-import { IMessage }         from './message.interface';
+import { IMessage }         from './';
 
 export interface IGetMessage extends IMessage {
   fields: GetMessageFields;

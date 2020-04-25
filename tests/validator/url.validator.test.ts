@@ -4,8 +4,7 @@
  * @license     MIT
  */
 
-import { IUrlValidator } from '@src/validator/interface/url.validator-interface';
-import { UrlValidator }  from '@src/validator/url.validator';
+import { UrlValidator, IUrlValidator } from '@src/validator';
 
 describe('UrlValidator', () => {
   let sut: IUrlValidator;

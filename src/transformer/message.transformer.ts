@@ -5,7 +5,7 @@
  */
 
 import { AbstractMessageTransformer } from './message.abstract-transformer';
-import { IMessage }                   from '../amqp/interfaces';
+import { IMessage }                   from '../amqp';
 import { ITransformer }               from './interface';
 import { Message }                    from 'amqplib';
 

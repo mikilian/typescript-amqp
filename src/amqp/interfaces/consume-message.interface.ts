@@ -5,7 +5,7 @@
  */
 
 import { ConsumeMessageFields } from 'amqplib';
-import { IMessage }             from './message.interface';
+import { IMessage }             from './';
 
 export interface IConsumeMessage extends IMessage {
   fields: ConsumeMessageFields;

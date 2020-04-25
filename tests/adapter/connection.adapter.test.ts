@@ -4,8 +4,10 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter } from '@src/adapter/interface';
-import { ConnectionAdapter }  from '@src/adapter';
+import {
+  ConnectionAdapter,
+  IConnectionAdapter
+}  from '@src/adapter';
 import {
   ConnectionFailedException,
   InvalidConnectionUrlException,

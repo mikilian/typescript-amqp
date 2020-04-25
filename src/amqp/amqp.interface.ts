@@ -4,8 +4,8 @@
  * @license     MIT
  */
 
-import { IConnectionAdapter } from '../adapter/interface/connection.adapter-interface';
-import { IListener } from '@src/amqp/interfaces/listener.interface';
+import { IConnectionAdapter } from '../adapter';
+import { IListener }          from '../amqp';
 
 export interface IAmqp extends IConnectionAdapter {
   /**

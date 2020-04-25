@@ -4,7 +4,7 @@
  * @license     MIT
  */
 
-import { IMessage } from './message.interface';
+import { IMessage } from './';
 
 export interface IListener {
   create(callback: (msg: IMessage | null) => any): Promise<void>;

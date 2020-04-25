@@ -4,7 +4,7 @@
  * @license     MIT
  */
 
-import { IMessage }     from '../amqp/interfaces';
+import { IMessage }     from '../amqp';
 import { ITransformer } from './interface';
 import { Message }      from 'amqplib';
 

@@ -4,7 +4,7 @@
  * @license     MIT
  */
 
-import { IUrlValidator } from './interface/url.validator-interface';
+import { IUrlValidator } from './interface';
 
 export class UrlValidator implements IUrlValidator {
   public isValid(url: string): boolean {

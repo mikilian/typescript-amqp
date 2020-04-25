@@ -4,5 +4,4 @@
  * @license     MIT
  */
 
-export * from './connection.adapter';
-export * from './interface';
+export * from './url.validator-interface';
