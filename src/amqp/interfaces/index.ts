@@ -11,5 +11,6 @@ export * from './get-message.interface';
 export * from './listener.interface';
 export * from './message.interface';
 export * from './publish-subscribe.interface';
+export * from './routing.interface';
 export * from './rpc.interface';
 export * from './worker.interface';
