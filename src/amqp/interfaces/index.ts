@@ -10,3 +10,4 @@ export * from './consume-message.interface';
 export * from './get-message.interface';
 export * from './listener.interface';
 export * from './message.interface';
+export * from './rpc.interface';
