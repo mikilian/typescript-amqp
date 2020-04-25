@@ -8,4 +8,5 @@ export * from './listener';
 export * from './publish';
 export * from './routing';
 export * from './rpc';
+export * from './topics';
 export * from './worker';
