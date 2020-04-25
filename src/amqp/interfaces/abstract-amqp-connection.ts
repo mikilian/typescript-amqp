@@ -5,11 +5,15 @@
  */
 
 import { Connection } from 'amqplib';
-import { IMessageTransformer } from '@src/transformer';
+import {
+  IMessageParameterTransformer,
+  IMessageTransformer
+} from '../../transformer';
 
 export abstract class AbstractAmqpConnection {
   protected constructor(
-    protected readonly connection:         Connection,
-    protected readonly messageTransformer: IMessageTransformer
+    protected readonly connection:                  Connection,
+    protected readonly messageParameterTransformer: IMessageParameterTransformer,
+    protected readonly messageTransformer:          IMessageTransformer
   ) { }
 }
