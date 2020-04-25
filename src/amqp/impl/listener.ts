@@ -4,14 +4,18 @@
  * @license     MIT
  */
 
-import { Connection }                       from 'amqplib';
-import { AbstractAmqpConnection, IMessage } from '../interfaces';
+import { Connection } from 'amqplib';
+import {
+  AbstractAmqpConnection,
+  IListener,
+  IMessage
+} from '../interfaces';
 import {
   IMessageParameterTransformer,
   IMessageTransformer
 } from '../../transformer';
 
-export class AmqpListener extends AbstractAmqpConnection {
+export class AmqpListener extends AbstractAmqpConnection implements IListener {
   public constructor(
     private readonly queue:      string,
     connection:                  Connection,
